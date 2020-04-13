@@ -40,8 +40,11 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+
 - task: DotNetCoreCLI@2
-    displayName: 'dotnet publish --congfiguration $(buildConfiguration) --output $(build.ArtifactStagingDirectory)'
+    displayName: 'dotnet publish --configuration $(buildConfiguration) --output $(build.ArtifactStagingDirectory)'
      inputs: 
          command: publish
          publishWebProjects: false
